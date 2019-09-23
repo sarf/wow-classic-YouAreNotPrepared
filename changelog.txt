@@ -1,2 +1,5 @@
-1.0
-    Initial released
+1.0.1
+    Added Mage, Paladin and Priest
+
+1.0.0
+    Initial release

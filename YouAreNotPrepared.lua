@@ -40,6 +40,33 @@ function YouAreNotPrepared:GetItemsInBags(isItMatch)
     return map
 end
 
+function YouAreNotPrepared:GetAmountOfItemInBags(itemId)
+    local map = self:GetItemsInBags(function(id) return itemId == id end)
+    if type(map) ~= "table" then return 0 end
+    local amount = 0
+    for k, v in pairs(map) do
+        amount = amount + v.amount 
+    end
+    return amount
+end
+
+function YouAreNotPrepared:CreateReminderAbout(configOption, canDoFunc, defaultNumFunc, itemId, message)
+    if not self.initialized then self.initialized = {} end
+    if not self.initialized[configOption] and canDoFunc() then 
+        self.initialized[config] = true
+        if type(defaultNumFunc) == "number" then defaultNumFunc = function() return defaultNumFunc end end
+        local reminderFunc = function()
+            if self:GetConfigurationOption(configOption, defaultNumFunc()) > self:GetAmountOfItemInBags() then
+                return true
+            end
+            return false, message
+        end
+        return true
+    end
+end
+
+
+
 function YouAreNotPrepared:Cache(cacheIndex, cacheFunc, needCachingFunc)
     if type(self.cache[cacheIndex]) ~= "table" then self.cache[cacheIndex] = {} end
     local currentCache = self.cache[cacheIndex]

@@ -1,5 +1,6 @@
 ## Interface: 11302
 ## Title: You Are Not Prepared
+## Version: 1.0.1
 ## Author: Sarf
 ## Description: An addon that remind you about the important things in your WoW life - ammo, poisons, reagents, talent points etc
 ## SavedVariables: YouAreNotPrepared_Global
@@ -7,6 +8,9 @@
 SarfCommonLib.lua
 YouAreNotPrepared.lua
 YouAreNotPrepared_Ammo.lua
+YouAreNotPrepared_MAGE.lua
+YouAreNotPrepared_PALADIN.lua
+YouAreNotPrepared_PRIEST.lua
 YouAreNotPrepared_ROGUE.lua
 
 YouAreNotPrepared_Splash.xml
